@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes,Link} from 'react-router-dom';
 import ProductList from './components/ProductList';
 import CartSummary from './components/CartSummary';
 import ThankYou from './components/ThankYou';
@@ -23,10 +23,7 @@ function App() {
     });
     setFilteredProducts(filtered);
   }, [filters, searchTerm, products]);
-
-  const getcartdata=(e)=>{
-    setForcart(e);
-  }
+  
 
   return (
     <Router>
@@ -34,9 +31,12 @@ function App() {
         <h1>Product Listing</h1>
         <Filters filters={filters} setFilters={setFilters} />
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <Link to="/cart">
+        <button>Cart</button>
+      </Link>
         <Routes>
-          <Route path="/" element={<ProductList products={filteredProducts} togetcartdata={getcartdata}/>} />
-          <Route path="/cart" element={<CartSummary cartItems={forcart}/>} />
+          <Route path="/" element={<ProductList products={filteredProducts}/>} />
+          <Route path="/cart" element={<CartSummary cartItems={products}/>} />
           <Route path="/thank-you" element={<ThankYou />} />
         </Routes>
       </div>

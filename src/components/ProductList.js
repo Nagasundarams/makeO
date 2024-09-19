@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductItem from './ProductItem';
 
-function ProductList({ products,togetcardata }) {
+function ProductList({ products }) {
   return (
     <div>
       {products.map(product => (

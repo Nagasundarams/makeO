@@ -25,7 +25,8 @@ function ProductItem({ product,togetcardata }) {
       
     }
 
-    // Optionally, reset the quantity input and selected state
+    console.log(cart);
+    
     setQuantity(1);
     setSelected(false);
   };
