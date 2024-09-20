@@ -1,47 +1,27 @@
 import React, { useState } from 'react';
 
-function ProductItem({ product,togetcardata }) {
+function ProductItem({ product, addToCart }) {
   const [quantity, setQuantity] = useState(1);
   const [selected, setSelected] = useState(false);
-  const [cart, setCart] = useState([]);
-
 
   const handleAddToCart = () => {
     if (!selected) return; // Only add if selected
-
-    const itemInCart = cart.find(item => item.id === product.id);
-
-    if (itemInCart) {
-      // If item already in cart, update its quantity
-      const updatedCart = cart.map(item =>
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + quantity }
-          : item
-      );
-      setCart(updatedCart);
-    } else {
-      // Add new item to the cart
-      setCart([...cart, { ...product, quantity }]);
-      
-    }
-
-    console.log(cart);
-    
+    addToCart(product, quantity);
     setQuantity(1);
     setSelected(false);
   };
 
-  
-
   return (
-    <div>
+    <div className="product-item">
       <h2>{product.name}</h2>
-      <img src={product.image} alt={product.name} />
-      <p>{product.description}</p>
-      <p>${product.price}</p>
+      <img src={product.image} alt={product.name} className="product-image"/>
+      <p className="product-info">{product.description}</p>
+      <p className="product-price">${product.price}</p>
+      <p>{product.inStock ? "Stock Available" : "out of stock"}</p>
       <input
         type="number"
         value={quantity}
+        className="quantity-input"
         min="1"
         onChange={(e) => setQuantity(Number(e.target.value))}
       />
@@ -50,7 +30,7 @@ function ProductItem({ product,togetcardata }) {
         checked={selected}
         onChange={() => setSelected(!selected)}
       />
-      <button onClick={handleAddToCart}>Add to Cart</button>
+      <button className="add-to-cart-button"  onClick={handleAddToCart}>Add to Cart</button>
     </div>
   );
 }

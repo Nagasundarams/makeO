@@ -6,21 +6,23 @@ function CartSummary({ cartItems, updateQuantity }) {
   const navigate=useNavigate();
 
   return (
-    <div>
+    <div >
       <h2>Cart Summary</h2>
       {cartItems.map(item => (
-        <div key={item.id}>
+        <div key={item.id} className="product-item">
           <h3>{item.name}</h3>
-          <p>Price: ${item.price}</p>
+          <img src={item.image} alt={item.name} className="product-image"/>
+          <p className="product-price">Price: ${item.price}</p>
           <input 
             type="number" 
             value={item.quantity} 
+            className="quantity-input"
             onChange={(e) => updateQuantity(item.id, e.target.value)} 
           />
         </div>
       ))}
       <h2>Total: ${total.toFixed(2)}</h2>
-      <button onClick={() => {alert("Proceeding to checkout..."); navigate('/thank-you') }}>Proceed to Checkout</button>
+      <button className="add-to-cart-button"  onClick={() => {alert("Proceeding to checkout..."); navigate('/thank-you') }}>Proceed to Checkout</button>
     </div>
   );
 }

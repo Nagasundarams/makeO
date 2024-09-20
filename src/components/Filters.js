@@ -6,19 +6,21 @@ function Filters({ filters, setFilters }) {
   };
 
   return (
-    <div>
-      <select onChange={(e) => setFilters({...filters, category: e.target.value})}>
+    <div className='filter'>
+      <select style={{margin:10}} onChange={(e) => setFilters({...filters, category: e.target.value})}>
         <option value="">All Categories</option>
         <option value="Hoodie">Hoodie</option>
         <option value="T-shirt">T-shirt</option>
+        <option value="sweater">Sweater</option>
+        <option value="Other">Others</option>
       </select>
-      <select onChange={(e) => setFilters({...filters, size: e.target.value})}>
+      <select style={{margin:10}} onChange={(e) => setFilters({...filters, size: e.target.value})}>
         <option value="">All Sizes</option>
         <option value="M">M</option>
         <option value="L">L</option>
         <option value="XL">XL</option>
       </select>
-      <button onClick={handleReset}>Reset</button>
+      <button style={{margin:5}} onClick={handleReset}>Reset</button>
     </div>
   );
 }

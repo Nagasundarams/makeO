@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 function ThankYou() {
   return (
     <div>
-      <h1>Thank You for Your Purchase!</h1>
+      <h1>Thank You So much Your Purchase, Have a Great Day:)</h1>
       
-      <button onClick={()=>{window.location.href = '/'}}>Home</button>
+      <button className="add-to-cart-button"  onClick={()=>{window.location.href = '/'}}>Home</button>
       
     </div>
   );

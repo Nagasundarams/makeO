@@ -3,6 +3,7 @@ import React from 'react';
 function SearchBar({ searchTerm, setSearchTerm }) {
   return (
     <input 
+    className='search'
       type="text" 
       placeholder="Search products..." 
       value={searchTerm} 
